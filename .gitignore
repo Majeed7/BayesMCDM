@@ -1,0 +1,17 @@
+.venv/
+**/.vscode/
+**/__pycache__/
+backup/
+build/
+dist/
+lib/
+test/
+data/
+BayesMCDM.egg-info/
+.DS_Store
+*.egg
+*.egg-info
+*.log
+
+*.pyc
+
