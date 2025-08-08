@@ -14,9 +14,9 @@
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](https://github.com/Majeed7/bayesmcdm/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/Majeed7/bayesmcdm)](https://github.com/Majeed7/bayesmcdm/commits/main)
 
-BayesMCDM is a Python library for Bayesian modeling of various multi-criteria decision-making (MCDM) methods. This toolkit enables robust, probabilistic analysis of decision problems by incorporating uncertainty in preferences and criteria weights. The project is under active development—expect more models and functionalities to be added over time.
+BayesMCDM is a Python library for Bayesian modeling of various multi-criteria decision-making (MCDM) methods. This toolkit enables robust, probabilistic analysis of decision problems by incorporating uncertainty in preferences and criteria weights. **The project is under active development**—expect more models and functionalities to be added over time.
 
-**You can solve your decision problems directly in your browser—no installation needed.**
+**You can solve your decision problems directly in your browser—no software installation needed.**
 
 ## Supported Preference Types
 
@@ -78,10 +78,54 @@ BayesMCDM offers several visualization tools to help interpret Bayesian results:
 <p align="center">
     <img src="https://raw.githubusercontent.com/Majeed7/BayesMCDM/main/figures/ridge_plot.png" alt="Weight Distribution example" height="500px"/>
 </p>
-*Figure: Example of weight distributions*
+* Figure: Example of weight distributions *
 
 
 **Weight distributions** plots display the full posterior distributions of criteria weights, allowing users to assess uncertainty, variability, and the impact of preference types on the final weights.
+
+
+
+
+## PyPI Package & Installation
+
+BayesMCDM is available as a PyPI package. You can install it directly using pip:
+
+```bash
+pip install bayesmcdm
+```
+
+After installation, you can use BayesMCDM in your Python scripts or Jupyter notebooks. Here is a minimal example (from the AHP Aggregation notebook) to get you started:
+
+```python
+import numpy as np
+from BayesMCDM import AHP
+
+# Define the PCM array (example for 5 criteria, 5 decision makers)
+PCM = [
+    [
+        [1,   3,   5,     4, 7],
+        [1/3, 1,   3,     2, 5],
+        [1/5, 1/3, 1,   1/2, 3],
+        [1/4, 1/2,   2,   1, 3],
+        [1/7, 1/5, 1/3, 1/3, 1],
+    ],
+        [
+        [1,     4,   3,    5,  8],
+        [1/4,   1,   4,    3,  6],
+        [1/3, 1/4,   1,    1,  5],
+        [1/5, 1/3,   1,    1,  7],
+        [1/8, 1/6, 1/5,  1/7,  1],
+    ],
+    # ... (other decision makers' PCMs) ...
+]
+criteria_names = ["C1", "C2", "C3", "C4", "C5"]
+
+# Initialize and run the Bayesian AHP model
+ahp = AHP.StandardAHP(PCM=PCM)
+ahp.sampling()
+```
+
+See the example notebooks for more advanced usage, visualization, and group decision-making features.
 
 ## License
 
