@@ -17,6 +17,8 @@
 BayesMCDM is a Python library for Bayesian modeling of various multi-criteria decision-making (MCDM) methods. This toolkit enables robust, probabilistic analysis of decision problems by incorporating uncertainty in preferences and criteria weights. **The project is under active development**—expect more models and functionalities to be added over time.
 
 **You can solve your decision problems directly in your browser—no software installation needed.**
+   
+   
 
 ## Supported Preference Types
 

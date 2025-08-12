@@ -12,6 +12,7 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
+    python_requires=">=3.7",
     install_requires=[
         "numpy",
         "pystan",  

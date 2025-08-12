@@ -112,7 +112,7 @@ class MCDMProblem(ABC):
                 posterior = stan.build(self.model, data=self.input_data, random_seed=1)
                 
                 print("Sampling started...")
-                self.samples = posterior.sample(num_chains=self.num_chains, num_samples=self.num_samples, num_warmup=100)
+                self.samples = posterior.sample(num_chains=self.num_chains, num_samples=self.num_samples, num_warmup=300)
                 print("Sampling finished.")
                 self.process_samples() 
         else:

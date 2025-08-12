@@ -8,3 +8,52 @@ version = "0.1.1.52"
 readme = "README.md"
 description = "Bayesian Multi-Criteria Decision-Making Toolkit"
 authors = [{name = "Majid Mohammadi"}]
+requires-python = ">=3.7"
+authors = [
+    {name = "Majid Mohammadi", email = "majid.mohammadi690@gmail.com"},
+]
+maintainers = [
+    {name = "Majid Mohammadi", email = "majid.mohammadi690@gmail.com"},
+]
+license = "MIT"
+
+keywords = [
+    "python",
+    "Multi Criteria Decision Making (MCDM)",
+    "Bayesian",
+    "credal ranking",
+    "Analytic Hierarchy Process (AHP)",
+    "Best Worst Method (BWM)",
+    "SWING",
+    "Point Allocation",
+    "Weight Aggregation",
+    "Bayesian Inference",
+    "Decision Analysis",
+    "Decision Support Systems",
+    "Decision Making",
+    "Group Decision Making",
+    "Group aggregation",
+    "group clustering",
+    "Interval preferences",
+    "Preference modeling",
+    "Preference aggregation",
+    "Preference elicitation",
+    "Gaussian number preferences",
+    "Triangular number preferences",
+    "Interval number preferences",
+    "Fuzzy number preferences",
+    "probabilistic ranking",
+    "probabilistic decision making",
+    "probabilistic preference modeling",
+    "probabilistic group decision making",
+    "probabilistic group aggregation",
+    "probabilistic group clustering",
+    "correlation analysis",
+    "correlation-based decision making",
+    "correlation-based preference modeling",
+    "correlation based group decision making",
+    "correlation-based group aggregation",
+    "correlation-based group clustering",
+    "criteria correlation",
+    "criteria correlation analysis",
+]

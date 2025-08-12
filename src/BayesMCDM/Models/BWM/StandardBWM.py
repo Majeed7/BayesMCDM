@@ -344,7 +344,7 @@ class StandardBWM(MCDMProblem):
         }
     """
 
-    def __init__(self, AB, AW, alternatives = None, dm_cluster_number=-1, alt_sort_number=-1, num_chain=3, num_samples=1000, opt={}):
+    def __init__(self, AB, AW, alternatives = None, dm_cluster_number=-1, alt_sort_number=-1, num_chain=3, num_samples=2000, opt={}):
         self.AB = np.array(AB)
         self.AW = np.array(AW)
 
