@@ -22,43 +22,54 @@ BayesMCDM is a Python library for Bayesian modeling of various multi-criteria de
 
 ## Supported Preference Types
 
-Each method currently supports the standard preference type (e.g., 1-9 scale), which is fully implemented, tested, and ready for use. Additionally, BayesMCDM is being extended to handle a variety of preference formats for each method (these features are under active testing):
+BayesMCDM currently supports several types of preference formats for each method.
 
-- **Interval** preferences
-- **Triangular** fuzzy preferences
-- **Gaussian** (normal) preferences
+Support for **group aggregation** of preferences and **decision-maker clustering** is available or under development for these formats, enabling analysis of collective decisions and identification of groups with homogeneous preferences.
 
-Support for **group aggregation** of preferences is also being developed, enabling analysis of collective decisions from multiple decision-makers. Additionally, a **decision-maker clustering** feature is under construction, which will identify groups of decision-makers with homogeneous preferences.
+- **Standard (crisp) scale (e.g., 1-9 or any other crisp scale)**
+    *Fully implemented, tested, and ready for use.*
+
+- **Interval preferences**  
+    *Under construction.*
+
+- **Triangular fuzzy preferences**  
+    *Under construction.*
+
+- **Gaussian (normal) preferences**  
+    *Under construction.*
 
 ## Supported Methods
 The following methods are supported, each with an interactive Google Colab link. These links open ready-to-run notebooks containing example scripts for each method. You can enter your own data and solve your MCDM problem directly in your browser—no installation required.
 
-
-
 ### 1. Analytic Hierarchy Process (AHP)
 AHP is a structured technique for organizing and analyzing complex decisions, based on pairwise comparisons among all criteria.
-- [Standard AHP Solver](https://colab.research.google.com/drive/1DLjKhuP29mEiDufejISw8mAMg0MRTIca#scrollTo=c34095ea)  
-    *Includes a simple example using standard crisp 1-9 preferences.*
+- **Standard scale (crisp 1-9):**
+    - [Aggregation](https://colab.research.google.com/drive/1DLjKhuP29mEiDufejISw8mAMg0MRTIca)
+    - [Clustering](https://colab.research.google.com/drive/1JkFNUtagwvCac2Uqh86Je2vfSa2Wil1F)
 
 ### 2. Best-Worst Method (BWM)
 BWM uses the best and worst criteria to derive optimal weights through pairwise comparisons.
-- [Standard BWM Solver](https://colab.research.google.com/drive/12X4of4jk5M9mkwQOPehih9XLm7tBkhnL)  
-    *Includes a simple example using standard crisp 1-9 preferences.*
+- **Standard scale (crisp 1-9):**
+    - [Aggregation](https://colab.research.google.com/drive/12X4of4jk5M9mkwQOPehih9XLm7tBkhnL)
+    - [Clustering](https://colab.research.google.com/drive/17NRtP7-YXnwl_QcKM31jT2u9VKm90es7)
 
 ### 3. SWING Method
 The SWING method elicits weights by asking decision-makers to "swing" criteria from worst to best, reflecting their relative importance.
-- [Standard SWING Solver](https://colab.research.google.com/drive/13KPG9WkHnUrYKdAZq5IJAEkqQHD5izHx?usp=drive_open)  
-    *Includes a simple example using standard crisp preferences.*
+- **Standard scale (crisp):**
+    - [Aggregation](https://colab.research.google.com/drive/13KPG9WkHnUrYKdAZq5IJAEkqQHD5izHx)
+    - [Clustering](https://colab.research.google.com/drive/13KPG9WkHnUrYKdAZq5IJAEkqQHD5izHx)
 
 ### 4. Point Allocation
 Point Allocation allows decision-makers to distribute a fixed number of points among criteria to indicate their importance.
-- [Standard Point Allocation Solver](https://colab.research.google.com/drive/1Dh6AB3kCa1pkXdkiKzKDMix6_1GoJBw-?usp=drive_open)  
-    *Includes a simple example using standard crisp preferences.*
+- **Standard scale (crisp):**
+    - [Aggregation](https://colab.research.google.com/drive/1Dh6AB3kCa1pkXdkiKzKDMix6_1GoJBw-)
+    - [Clustering](https://colab.research.google.com/drive/1oJ4q36DVY1ZYDZWMmHWgzwkGv54i_hUb)
 
 ### 5. Weight Analyzer
-The Weight Analyzer provides tools for analyzing the computed weights (and not preferences).
-- [Standard Weight Analyzer](https://colab.research.google.com/drive/1148-72AHpfxGhfimLCjs-84prgoQ0wlr#scrollTo=GbxNVoSK4Ft9)  
-    *Includes a simple example on how to aggregate weights in a probabilistic manner.*
+The Weight Analyzer provides tools for analyzing the weights (and not preferences) that are computed by an MCDM method.
+- **Standard scale (weights):**
+    - [Aggregation](https://colab.research.google.com/drive/1148-72AHpfxGhfimLCjs-84prgoQ0wlr)
+    - [Clustering](https://colab.research.google.com/drive/1vnOkOfGZX5782yzlLTQqEPEbncbmLoV4)
 
 ## Visualization
 
@@ -135,4 +146,4 @@ This project is licensed under the MIT License.
 
 ---
 
-Built by Majid Mohammadi  
+Built by Majid Mohammadi

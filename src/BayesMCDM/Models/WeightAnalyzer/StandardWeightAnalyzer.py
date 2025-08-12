@@ -52,14 +52,20 @@ class StandardWeightAnalyzer(MCDMProblem):
 
         model {
             for(i in 1:DmC){
-                wc[i] ~ dirichlet(0.001*e);
-                ksi[i] ~ gamma(gamma_param, gamma_param);
+                wc[i] ~ dirichlet(1*e);
+                ksi[i] ~ gamma(gamma_param,gamma_param);
             }
-
+            
             for (i in 1:DmNo) {
                 array[DmC] real contribution;
-                for(j in 1:DmC)
-                    contribution[j] = log(theta[i,j]) + dirichlet_lpdf( W[i] | ksi[j]*wc[j]);
+                for(j in 1:DmC){
+                    vector[CNo] conc = ksi[j] * wc[j];
+                    for (k in 1:CNo) {
+                        if (conc[k] < 1e-15) conc[k] = 1e-15;
+                    }
+
+                    contribution[j] = log(theta[i,j]) + dirichlet_lpdf( W[i] | conc );
+                }
                 target += log_sum_exp(contribution);
 
             }

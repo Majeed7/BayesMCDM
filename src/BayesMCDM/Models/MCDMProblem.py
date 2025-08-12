@@ -76,7 +76,7 @@ class MCDMProblem(ABC):
 
     def _get_common_data(self):
         data = {}
-        data['gamma_param'] = 0.01
+        data['gamma_param'] = 0.1
         data['sigma_coef'] = 0.1
         data['DmNo'] = self.dm_no
         data['CNo'] = self.criteria_no
@@ -112,7 +112,7 @@ class MCDMProblem(ABC):
                 posterior = stan.build(self.model, data=self.input_data, random_seed=1)
                 
                 print("Sampling started...")
-                self.samples = posterior.sample(num_chains=self.num_chains, num_samples=self.num_samples, num_warmup=300)
+                self.samples = posterior.sample(num_chains=self.num_chains, num_samples=self.num_samples, num_warmup=self.num_samples / 2)
                 print("Sampling finished.")
                 self.process_samples() 
         else:
@@ -125,7 +125,6 @@ class MCDMProblem(ABC):
         with contextlib.redirect_stderr(f):
             yield
 
-
     def process_samples(self):
         if self.__class__.__name__ != "StandardWeightAnalyzer":
             self.dm_weight_samples = self.samples['W'].T
@@ -133,8 +132,8 @@ class MCDMProblem(ABC):
 
 
         if self._is_clustering_required:
-            self.cluster_center_samples = self.samples['wc']
-            self.cluster_centers = np.mean(self.cluster_center_samples, axis=2)
+            self.dm_cluster_center_samples = self.samples['wc']
+            self.dm_cluster_centers = np.mean(self.dm_cluster_center_samples, axis=2)
             self.dm_membership_samples = self.samples['theta']
             self.dm_membership = np.mean(self.dm_membership_samples, axis=2)
             

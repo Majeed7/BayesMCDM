@@ -53,7 +53,6 @@ class StandardBWM(MCDMProblem):
             vector<lower=0,upper=1>[CNo] e;
 
             int<lower=2> DmC;
-
             real<lower=0.0001> gamma_param; // prior for the Gamma distribution
         }
 
@@ -71,21 +70,27 @@ class StandardBWM(MCDMProblem):
             array[DmNo] simplex[CNo] AW_normalized;
 
             for(i in 1:DmNo) {
-                AB_normalized[i] = (e ./ AB[i]) ./ sum(e ./ AB[i]);
+                AB_normalized[i] = (1 ./ AB[i]) ./ sum(1 ./ AB[i]);
                 AW_normalized[i] = AW[i] ./ sum(AW[i]);       
             }
         } 
 
         model {
             for(i in 1:DmC){
-                wc[i] ~ dirichlet(0.01*e);
+                wc[i] ~ dirichlet(1*e);
                 ksi[i] ~ gamma(gamma_param,gamma_param);
             }
             
             for (i in 1:DmNo) {
                 array[DmC] real contribution;
-                for(j in 1:DmC)
-                    contribution[j] = log(theta[i,j]) + dirichlet_lpdf( W[i] | ksi[j]*wc[j]);
+                for(j in 1:DmC){
+                    vector[CNo] conc = ksi[j] * wc[j];
+                    for (k in 1:CNo) {
+                        if (conc[k] < 1e-15) conc[k] = 1e-15;
+                    }
+
+                    contribution[j] = log(theta[i,j]) + dirichlet_lpdf( W[i] | conc );
+                }
                 target += log_sum_exp(contribution);
 
                 kappa[i] ~ gamma(gamma_param,gamma_param);
@@ -344,7 +349,7 @@ class StandardBWM(MCDMProblem):
         }
     """
 
-    def __init__(self, AB, AW, alternatives = None, dm_cluster_number=-1, alt_sort_number=-1, num_chain=3, num_samples=2000, opt={}):
+    def __init__(self, AB, AW, alternatives = None, dm_cluster_number=-1, alt_sort_number=-1, num_chain=3, num_samples=5000, opt={}):
         self.AB = np.array(AB)
         self.AW = np.array(AW)
 

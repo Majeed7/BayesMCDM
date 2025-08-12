@@ -4,19 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "BayesMCDM"
-version = "0.1.1.52"
+version = "0.1.1.59"
 readme = "README.md"
 description = "Bayesian Multi-Criteria Decision-Making Toolkit"
 authors = [{name = "Majid Mohammadi"}]
-requires-python = ">=3.7"
-authors = [
-    {name = "Majid Mohammadi", email = "majid.mohammadi690@gmail.com"},
-]
+requires-python = ">=3.9"
+license = { text = "MIT" }
 maintainers = [
     {name = "Majid Mohammadi", email = "majid.mohammadi690@gmail.com"},
 ]
-license = "MIT"
-
 keywords = [
     "python",
     "Multi Criteria Decision Making (MCDM)",
@@ -56,4 +52,18 @@ keywords = [
     "correlation-based group clustering",
     "criteria correlation",
     "criteria correlation analysis",
+]
+
+dependencies = [
+    "numpy",
+    "pystan",
+    "graphviz==0.17",
+    "ipython",
+    "matplotlib",
+    "nest_asyncio",
+    "pandas",
+    "scipy",
+    "seaborn",
+    "setuptools",
+    "networkx",
 ]
